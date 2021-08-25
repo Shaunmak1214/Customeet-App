@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { Flex, VStack, Text, HStack, Center, Link } from "@chakra-ui/layout";
+import React, {useState} from 'react';
+import { Flex, VStack, Text,  Center, Link } from "@chakra-ui/layout";
 import { Image } from '@chakra-ui/image'
 import './App.css';
 import Header from './components/Header';
@@ -17,30 +17,26 @@ function App() {
   const [stepHover, setStepHover] = useState(1);
   const stepImage = [Step1 , Step2, Step3];
 
-  useEffect(() => {
-    console.log(stepHover)
-  }, [stepHover])
-
   return (
-    <Flex w="100wv" flexDir="column" alignItems="center" >
-      <VStack w="container.xl" >
+    <Flex w="100%" flexDir="column" alignItems="center" >
+      <VStack w="90%" maxW="container.xl" >
         <Header />
         <CMSpacer size="sm" />
-        <Image src={LandingSplash} alt="Splash Image" />
+        <Image src={LandingSplash} w="100%" alt="Splash Image" />
       </VStack>
       <CMSpacer size="sm" />
       <Seperator>
         Customize your google meet as much as you want
       </Seperator>
       <CMSpacer />
-      <VStack w="container.xl" >
+      <VStack w="90%" maxW="container.xl" >
         <VStack w="100%" alignItems="start" >
-          <HStack><Text fontSize="35px" fontWeight="600">How to use</Text><CustomeetText /></HStack>
+          <Text fontSize="35px" fontWeight="600">How to use{' '}<CustomeetText /></Text>
           <Text fontSize="18px">A technical guide, showing you from 0 to customizing your google meet</Text>
         </VStack>
         <CMSpacer size="sm" />
-        <HStack w="100%" alignItems="flex-start">
-          <VStack w="50%" spacing="5" alignItems="start" justifyContent="flex-start">
+        <Flex flexDir={['column-reverse', 'column-reverse', 'row']} w="100%" alignItems="flex-start">
+          <VStack w={['100%', '100%', '50%']} spacing="5" alignItems="start" justifyContent="flex-start">
             <VStack onMouseOver={() => { setStepHover(1) }} alignItems="flex-start" cursor="pointer" py="4" px="7" border={stepHover === 1 ? "1px solid #CACACA" : "1px solid #FFFFFF"} borderRadius="15px">
               <Text fontSize="15px" color="#797979">Step 1</Text>
               <Text fontSize="18px">Installing from <Link href="www.google.com" color="#0997FF" >chrome web store</Link> </Text>
@@ -54,68 +50,64 @@ function App() {
               <Text fontSize="18px">Customize and update!</Text>
             </VStack>
           </VStack>
-          <Center w="50%" alignSelf="center">
-            <Image src={stepImage[stepHover - 1]} alt="Splash Image" />
+          <Center w={['100%', '100%', '50%']} mb={['20px', '20px', '0px']} alignSelf="center">
+            <Image src={stepImage[stepHover - 1]} width="50%" alt="Splash Image" />
           </Center>
-        </HStack>
+        </Flex>
       </VStack>
 
       <CMSpacer />
 
-      <VStack w="container.xl">
-        <HStack><CustomeetText /><Text fontSize="35px" fontWeight="600">Notable Features</Text></HStack>
-        <CMSpacer size="sm" />
-        <VStack w="100%">
-          <HStack w="100%" alignItems="flex-start" justifyContent="space-between">
-            <VStack w="100%" alignItems="flex-start" justifyContent="flex-start">
-              <Text fontSize="25px" color="#000000">Pick themes from millions of choices.</Text>
-              <Text fontSize="18px" color="#797979">Themes will be available shortly, you can submit and browse themes made from others in the future too!</Text>
-            </VStack>
-            <Center>
-              <Image src={LandingSplash} alt="Splash Image" />
-            </Center>
-          </HStack>
-        </VStack>
+      <VStack w="90%" maxW="container.xl">
+        <Text fontSize="35px" fontWeight="600"><CustomeetText /> Notable Features</Text>
+
         <CMSpacer size="sm" />
 
-        <VStack w="100%">
-          <HStack w="100%" alignItems="flex-start" justifyContent="space-between" flexDir="row-reverse" >
-            <VStack w="100%" alignItems="flex-end" justifyContent="flex-start">
-              <Text textAlign="right" fontSize="25px" color="#000000">Easy to use color picker</Text>
-              <Text textAlign="right" fontSize="18px" color="#797979">Customize colors with this easy to use color picker, click and drag, that easy!</Text>
-            </VStack>
-            <Center>
-              <Image src={LandingSplash} alt="Splash Image" />
-            </Center>
-          </HStack>
-        </VStack>
+        <Flex flexDir={['column', 'column', 'row']} w="100%" alignItems="flex-start" justifyContent="space-between">
+          <VStack w={['100%', '100%', '50%']} alignItems="flex-start" justifyContent="flex-start">
+            <Text fontSize="25px" color="#000000">Pick themes from millions of choices.</Text>
+            <Text fontSize="18px" color="#797979">Themes will be available shortly, you can submit and browse themes made from others in the future too!</Text>
+          </VStack>
+          <Flex w={['100%', '100%', '50%']} justifyContent="flex-end">
+            <Image src={LandingSplash} alt="Splash Image" />
+          </Flex>
+        </Flex>
+
         <CMSpacer size="sm" />
 
-        <VStack w="100%">
-          <HStack w="100%" alignItems="flex-start" justifyContent="space-between">
-            <VStack w="100%" alignItems="flex-start" justifyContent="flex-start">
-              <Text fontSize="25px" color="#000000">Pick themes from millions of choices.</Text>
-              <Text fontSize="18px" color="#797979">Themes will be available shortly, you can submit and browse themes made from others in the future too!</Text>
-            </VStack>
-            <Center>
-              <Image src={LandingSplash} alt="Splash Image" />
-            </Center>
-          </HStack>
-        </VStack>
+        <Flex flexDir={['column', 'column', 'row-reverse']} w="100%" alignItems="flex-start" justifyContent="space-between">
+          <VStack w={['100%', '100%', '50%']} alignItems={['flex-start', 'flex-start', 'flex-end']} justifyContent="flex-start">
+            <Text textAlign={['left', 'left', 'right']} fontSize="25px" color="#000000">Easy to use color picker</Text>
+            <Text textAlign={['left', 'left', 'right']} fontSize="18px" color="#797979">Customize colors with this easy to use color picker, click and drag, that easy!</Text>
+          </VStack>
+          <Flex w={['100%', '100%', '50%']} alignItems="flex-end" justifyContent="flex-end">
+            <Image src={LandingSplash} alt="Splash Image" />
+          </Flex>
+        </Flex>
+
         <CMSpacer size="sm" />
 
-        <VStack w="100%">
-          <HStack w="100%" alignItems="flex-start" justifyContent="space-between">
-            <VStack w="100%" alignItems="flex-start" justifyContent="flex-start">
-              <Text fontSize="25px" color="#000000">Pick themes from millions of choices.</Text>
-              <Text fontSize="18px" color="#797979">Themes will be available shortly, you can submit and browse themes made from others in the future too!</Text>
-            </VStack>
-            <Center>
-              <Image src={ LandingSplash } alt="Splash Image" />
-            </Center>
-          </HStack>
-        </VStack>
+        <Flex flexDir={['column', 'column', 'row']} w="100%" alignItems="flex-start" justifyContent="space-between">
+          <VStack w={['100%', '100%', '50%']} alignItems="flex-start" justifyContent="flex-start">
+            <Text fontSize="25px" color="#000000">Pick themes from millions of choices.</Text>
+            <Text fontSize="18px" color="#797979">Themes will be available shortly, you can submit and browse themes made from others in the future too!</Text>
+          </VStack>
+          <Flex w={['100%', '100%', '50%']} justifyContent="flex-end">
+            <Image src={LandingSplash} alt="Splash Image" />
+          </Flex>
+        </Flex>
+
         <CMSpacer size="sm" />
+
+        <Flex flexDir={['column', 'column', 'row-reverse']} w="100%" alignItems="flex-start" justifyContent="space-between">
+          <VStack w={['100%', '100%', '50%']} alignItems={['flex-start', 'flex-start', 'flex-end']} justifyContent="flex-start">
+            <Text textAlign={['left', 'left', 'right']} fontSize="25px" color="#000000">Easy to use color picker</Text>
+            <Text textAlign={['left', 'left', 'right']} fontSize="18px" color="#797979">Customize colors with this easy to use color picker, click and drag, that easy!</Text>
+          </VStack>
+          <Flex w={['100%', '100%', '50%']} alignItems="flex-end" justifyContent="flex-end">
+            <Image src={LandingSplash} alt="Splash Image" />
+          </Flex>
+        </Flex>
       </VStack>
 
       <CMSpacer />
