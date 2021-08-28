@@ -1,5 +1,5 @@
 import React, {FC} from 'react'
-import { Box } from "@chakra-ui/layout";
+import { Box, VStack } from "@chakra-ui/layout";
 
 const CustomeetText = () => {
   return (
@@ -23,4 +23,16 @@ const CMSpacer: FC<Props> = ({ size }) => {
   }
 }
 
-export {CustomeetText, CMSpacer};
+interface WrapperProps {
+  children?: React.ReactNode;
+}
+
+const CMWrapper : FC<WrapperProps> = ({children}: WrapperProps) => {
+  return (
+    <VStack w="90%" maxW="container.xl">
+      {children}
+    </VStack>
+  )
+}
+
+export {CustomeetText, CMSpacer, CMWrapper};
