@@ -7,7 +7,7 @@ import React from 'react'
 const Index = () => {
   return (
     <Flex flexDir={['column', 'row', null]} w="100%" justifyContent="space-between" py="5">
-      <HStack spacing="5">
+      <HStack onClick={() => {window.location.href="/"}} spacing="5">
         <Image src="/pngs/customeet.png" height="45px" width="45px" alt="Logo" />
         <Text fontSize="30px" fontWeight="600">Customeet</Text>
       </HStack>

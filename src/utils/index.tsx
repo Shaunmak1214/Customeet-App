@@ -25,11 +25,12 @@ const CMSpacer: FC<Props> = ({ size }) => {
 
 interface WrapperProps {
   children?: React.ReactNode;
+  
 }
 
-const CMWrapper : FC<WrapperProps> = ({children}: WrapperProps) => {
+const CMWrapper : FC<WrapperProps> = ({children, ...props}: WrapperProps) => {
   return (
-    <VStack w="90%" maxW="container.xl">
+    <VStack w="90%" maxW="container.xl" {...props}>
       {children}
     </VStack>
   )
